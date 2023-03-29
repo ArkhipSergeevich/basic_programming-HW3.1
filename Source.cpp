@@ -12,7 +12,6 @@ public:
 	double divide_2_1();
 	bool set_num1(double num1);
 	bool set_num2(double num2);
-	void input();
 	void output();
 };
 double calculator::add()
@@ -61,29 +60,30 @@ bool calculator::set_num1(double num1)
 {
 	if (num1 != 0)
 	{
-		num1 = num1;
+		this->num1 = num1;
 		return true;
 	}
 	else
+	{
+		this->num1 = num1;
 		return false;
+	}
+		
 }
 bool calculator::set_num2(double num2)
 {
 	if (num2 != 0)
 	{
-		num2 = num2;
+		this->num2 = num2;
 		return true;
 	}
 	else
+	{
+		this->num2 = num2;
 		return false;
+	}
 }
-void calculator::input()
-{
-	std::cout << "введите первое число\n";
-	std::cin >> num1;
-	std::cout << "введите второе число\n";
-	std::cin >> num2;
-}
+		
 void calculator::output()
 {
 	std::cout << "Резуальтат сложения первого и вторго числа: " << add() << "\n";
@@ -99,9 +99,15 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	calculator test;
+	double num_1, num_2;
 	while (true)
 	{
-		test.input();
+		std::cout << "введите первое число\n";
+		std::cin >> num_1;
+		std::cout << "введите второе число\n";
+		std::cin >> num_2;
+		test.set_num1(num_1);
+		test.set_num2(num_2);
 		test.output();
 		std::cout << "\n";
 	}
