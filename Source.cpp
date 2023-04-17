@@ -3,7 +3,6 @@
 class calculator
 {
 public:
-	double num1, num2;
 	double add();
 	double multiply();
 	double subtract_1_2();
@@ -13,6 +12,8 @@ public:
 	bool set_num1(double num1);
 	bool set_num2(double num2);
 	void output();
+private:
+	double num1, num2;
 };
 double calculator::add()
 {
@@ -65,7 +66,6 @@ bool calculator::set_num1(double num1)
 	}
 	else
 	{
-		this->num1 = num1;
 		return false;
 	}
 		
@@ -79,7 +79,6 @@ bool calculator::set_num2(double num2)
 	}
 	else
 	{
-		this->num2 = num2;
 		return false;
 	}
 }
@@ -107,7 +106,21 @@ int main()
 		std::cout << "введите второе число\n";
 		std::cin >> num_2;
 		test.set_num1(num_1);
+		while (test.set_num1(num_1) == false)
+		{
+			std::cout << "¬ведите отличное от нул€ число!" << std::endl;
+			std::cout << "введите первое число\n";
+			std::cin >> num_1;
+			test.set_num1(num_1);
+		}
 		test.set_num2(num_2);
+		while (test.set_num2(num_2) == false)
+		{
+			std::cout << "¬ведите отличное от нул€ число!" << std::endl;
+			std::cout << "введите второе число\n";
+			std::cin >> num_2;
+			test.set_num2(num_2);
+		}
 		test.output();
 		std::cout << "\n";
 	}
